@@ -1,0 +1,180 @@
+name: Mis 5 preguntas
+description: Comparte tus 5 preguntas sobre la TRM 2026, lo que respondió tu IA y cómo lo verificaste.
+title: "Mis 5 preguntas"
+labels: ["mis-5-preguntas"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Comparte tus 5 preguntas: lo que respondió tu IA y cómo lo verificaste. Es para conversar en clase; la entrega oficial sigue siendo en el campus del curso.
+
+        **Esta repo es pública:** no pongas datos personales ni datos de tu empresa.
+  - type: textarea
+    id: pregunta-1
+    attributes:
+      label: "Pregunta 1"
+      description: Tu pregunta, tal como se la hiciste a la IA.
+    validations:
+      required: true
+  - type: textarea
+    id: respuesta-1
+    attributes:
+      label: "Pregunta 1 · Lo que respondió la IA"
+      description: Pega la respuesta y di qué IA usaste (ChatGPT, Gemini, Claude, Copilot, OpenCode u otra).
+    validations:
+      required: true
+  - type: textarea
+    id: verificacion-1
+    attributes:
+      label: "Pregunta 1 · Tu verificación"
+      description: La fórmula o el cálculo con que lo comprobaste, y el resultado que te dio.
+    validations:
+      required: true
+  - type: dropdown
+    id: acerto-1
+    attributes:
+      label: "Pregunta 1 · ¿Acertó?"
+      options:
+        - "Sí"
+        - "En parte"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta-2
+    attributes:
+      label: "Pregunta 2"
+      description: Tu pregunta, tal como se la hiciste a la IA.
+    validations:
+      required: true
+  - type: textarea
+    id: respuesta-2
+    attributes:
+      label: "Pregunta 2 · Lo que respondió la IA"
+      description: Pega la respuesta y di qué IA usaste (ChatGPT, Gemini, Claude, Copilot, OpenCode u otra).
+    validations:
+      required: true
+  - type: textarea
+    id: verificacion-2
+    attributes:
+      label: "Pregunta 2 · Tu verificación"
+      description: La fórmula o el cálculo con que lo comprobaste, y el resultado que te dio.
+    validations:
+      required: true
+  - type: dropdown
+    id: acerto-2
+    attributes:
+      label: "Pregunta 2 · ¿Acertó?"
+      options:
+        - "Sí"
+        - "En parte"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta-3
+    attributes:
+      label: "Pregunta 3"
+      description: Tu pregunta, tal como se la hiciste a la IA.
+    validations:
+      required: true
+  - type: textarea
+    id: respuesta-3
+    attributes:
+      label: "Pregunta 3 · Lo que respondió la IA"
+      description: Pega la respuesta y di qué IA usaste (ChatGPT, Gemini, Claude, Copilot, OpenCode u otra).
+    validations:
+      required: true
+  - type: textarea
+    id: verificacion-3
+    attributes:
+      label: "Pregunta 3 · Tu verificación"
+      description: La fórmula o el cálculo con que lo comprobaste, y el resultado que te dio.
+    validations:
+      required: true
+  - type: dropdown
+    id: acerto-3
+    attributes:
+      label: "Pregunta 3 · ¿Acertó?"
+      options:
+        - "Sí"
+        - "En parte"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta-4
+    attributes:
+      label: "Pregunta 4"
+      description: Tu pregunta, tal como se la hiciste a la IA.
+    validations:
+      required: true
+  - type: textarea
+    id: respuesta-4
+    attributes:
+      label: "Pregunta 4 · Lo que respondió la IA"
+      description: Pega la respuesta y di qué IA usaste (ChatGPT, Gemini, Claude, Copilot, OpenCode u otra).
+    validations:
+      required: true
+  - type: textarea
+    id: verificacion-4
+    attributes:
+      label: "Pregunta 4 · Tu verificación"
+      description: La fórmula o el cálculo con que lo comprobaste, y el resultado que te dio.
+    validations:
+      required: true
+  - type: dropdown
+    id: acerto-4
+    attributes:
+      label: "Pregunta 4 · ¿Acertó?"
+      options:
+        - "Sí"
+        - "En parte"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: pregunta-5
+    attributes:
+      label: "Pregunta 5"
+      description: Tu pregunta, tal como se la hiciste a la IA.
+    validations:
+      required: true
+  - type: textarea
+    id: respuesta-5
+    attributes:
+      label: "Pregunta 5 · Lo que respondió la IA"
+      description: Pega la respuesta y di qué IA usaste (ChatGPT, Gemini, Claude, Copilot, OpenCode u otra).
+    validations:
+      required: true
+  - type: textarea
+    id: verificacion-5
+    attributes:
+      label: "Pregunta 5 · Tu verificación"
+      description: La fórmula o el cálculo con que lo comprobaste, y el resultado que te dio.
+    validations:
+      required: true
+  - type: dropdown
+    id: acerto-5
+    attributes:
+      label: "Pregunta 5 · ¿Acertó?"
+      options:
+        - "Sí"
+        - "En parte"
+        - "No"
+    validations:
+      required: true
+  - type: textarea
+    id: que-delegas
+    attributes:
+      label: Qué delegas y qué no
+      description: Después de verificar, ¿qué le dejarías a la IA y qué revisarías siempre tú?
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacidad
+    attributes:
+      label: Antes de enviar
+      options:
+        - label: No incluí datos personales ni de mi empresa.
+          required: true
