@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Material de la clase</title>
+<style>
+:root { --fondo: #FAFBFA; --texto: #1A1F1E; --suave: #3A4544; --acento: #0C5E59; --tarjeta: #E6F2F1; }
+@media (prefers-color-scheme: dark) { :root { --fondo: #0f1514; --texto: #e8f1ef; --suave: #9fb3af; --acento: #6fd0c4; --tarjeta: #1b2624; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--texto); font: 17px/1.5 Arial, Helvetica, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; display: flex; flex-direction: column; gap: 24px; }
+h1 { font-size: 30px; line-height: 1.2; margin: 0; text-wrap: balance; }
+h2 { font-size: 20px; margin: 0; color: var(--acento); }
+p { margin: 0; color: var(--suave); }
+section { background: var(--tarjeta); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 6px; }
+a { color: var(--texto); }
+a:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Material de la clase</h1>
+<p>Las diapositivas, la guía y los datos del módulo 1. La receta: describe, pide, verifica.</p>
+<section>
+<h2>Clase 1</h2>
+<ul>
+<li><a href="clases/m1-clase-1/">Diapositivas</a> (26 diapositivas)</li>
+<li><a href="clases/m1-clase-1/diapositivas-version-1.pdf">La primera versión, en PDF</a></li>
+<li><a href="https://calibra-v2.vercel.app/">Calibra</a>: responde y di qué tan seguro estás</li>
+</ul>
+</section>
+<section>
+<h2>Clase 2 · Tus 5 preguntas verificadas</h2>
+<ul>
+<li><a href="clases/m1-clase-2/">Diapositivas</a> (19 diapositivas)</li>
+<li><a href="clases/m1-clase-2/guia-paso-a-paso.html">Guía paso a paso</a></li>
+<li><a href="clases/m1-clase-2/anexo-rutas.html">Anexo: tu ruta (trabajo o tu stack)</a></li>
+<li><a href="clases/m1-clase-2/planilla-taller.xlsx">Planilla del taller (Excel)</a></li>
+<li><a href="datos/trm-2026.csv">Los datos: TRM 2026 (CSV)</a></li>
+</ul>
+</section>
+<section>
+<h2>Para tu IA</h2>
+<ul>
+<li><a href="AGENTS.md">AGENTS.md</a>: las instrucciones que lee tu agente</li>
+<li><a href="https://github.com/Maarmapa/clase-cdia01">La repo en GitHub</a>, para compartir tus 5 preguntas como issue</li>
+</ul>
+</section>
+<p>Repo pública: no pongas datos personales ni de tu empresa.</p>
+</main>
+</body>
+</html>

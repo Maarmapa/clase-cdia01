@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Anexo: tu ruta para las 5 preguntas</title></head>
+<body style="font-family:Arial, sans-serif">
+<h1>Anexo: tu ruta para las 5 preguntas</h1>
+<p><b>Módulo 1 · CDIA01 · UdeCataluña.</b> Este anexo acompaña a la guía paso a paso. Las preguntas y la planilla son las mismas para todos; lo que cambia es la herramienta. Haz primero los pasos 1 a 4 de la guía: así tienes tus propias respuestas para comparar.</p>
+
+<h2>La receta, en cualquier entorno</h2>
+<ol>
+<li><b>Describe.</b> Di qué tabla tienes y qué columnas trae, sin pegar datos confidenciales.</li>
+<li><b>Pide.</b> Que la IA escriba la fórmula, la medida o el código.</li>
+<li><b>Verifica.</b> Compara el resultado con lo que calculaste tú en la planilla. Si no coincide, revisa la pregunta, el cálculo y lo que hizo la IA, en ese orden.</li>
+</ol>
+
+<h2>Si estás en el computador del trabajo (Copilot, Excel o Power BI)</h2>
+<p>Usa solo lo que tu empresa autoriza. A la IA le das el esquema (el nombre de la tabla y de sus columnas), nunca datos confidenciales. La TRM es pública, así que con ella puedes practicar sin riesgo.</p>
+<ol>
+<li><b>Abre la planilla en Excel.</b> Desde el enlace de la guía, borra «/copy» al final, ábrelo y elige Archivo › Descargar › Microsoft Excel (.xlsx).</li>
+<li><b>Excel con Copilot.</b> Pídele: «En la hoja TRM 2026, la columna A es fecha y la B es trm, una fila por día. Escribe la fórmula para el promedio de trm entre el 1 y el 31 de octubre de 2026». Compara su resultado con tu respuesta de la pregunta 2.</li>
+<li><b>Power BI Desktop.</b> Elige Obtener datos › Libro de Excel, abre la planilla, marca la pestaña «TRM 2026» y elige Cargar. Revisa que la columna fecha quede como fecha.</li>
+<li><b>Pídele la medida a Copilot.</b> En Power BI, o en el chat de Copilot de tu empresa, escribe: «Tengo la tabla 'TRM 2026' con las columnas fecha y trm, una fila por día. Escribe una medida DAX con el promedio de trm del 1 al 31 de octubre de 2026». Debería parecerse a esto:<br>
+<code>Promedio octubre = CALCULATE(AVERAGE('TRM 2026'[trm]), 'TRM 2026'[fecha] &gt;= DATE(2026,10,1), 'TRM 2026'[fecha] &lt;= DATE(2026,10,31))</code><br>
+Si Power BI marca error en las comas, cámbialas por punto y coma: depende de la configuración regional.</li>
+<li><b>Verifica.</b> Pon la medida en una tarjeta y compárala con tu respuesta de la pregunta 2. Haz lo mismo con la máxima: <code>Máxima = MAX('TRM 2026'[trm])</code>.</li>
+<li><b>Anota.</b> En «Chat y modelo, con la fecha» escribe «Copilot en Excel» o «Copilot en Power BI» y la fecha. En «¿Acertó?», el mismo criterio de la guía.</li>
+</ol>
+<p>Si Copilot no aparece en tu Power BI, depende de la licencia y de que el administrador lo active. El paso 4 funciona igual en el chat de Copilot con el esquema.</p>
+
+<h2>Si armaste tu stack (OpenCode o Colab)</h2>
+<ol>
+<li><b>Pide el código.</b> En OpenCode, con un modelo gratis, o en tu chat de IA: «Escribe un programa en Python que baje la TRM de 2026 de datos.gov.co (conjunto 32sa-8pi3, de la Superintendencia Financiera) y responda: ¿cuál era la TRM vigente el 10 de noviembre de 2026?, ¿cuál fue el promedio de octubre de 2026 contando los 31 días? y ¿qué día, entre el 1 de enero y el 10 de noviembre, tuvo la TRM vigente más alta?».</li>
+<li><b>Córrelo.</b> En Colab: pega el código en una celda y elige Ejecutar. En OpenCode: pídele que lo corra y que te muestre la salida.</li>
+<li><b>Verifica.</b> Compara cada número con tu planilla. Ojo: datos.gov.co trae una fila por período de vigencia, no una por día. Si el programa promedia filas en vez de días, el promedio de octubre sale distinto. Por eso se verifica.</li>
+<li><b>Guárdalo (opcional).</b> Sube el programa a tu repo de GitHub, con un README que diga de dónde salen los datos y cómo se corre.</li>
+</ol>
+<p>Nunca pegues una llave de API en un chat ni en el código que subes a GitHub: es un secreto.</p>
+</body></html>

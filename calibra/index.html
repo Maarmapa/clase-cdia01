@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+</head>
+<body>
+<title>Calibra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a single instrument column. Question on top, confidence dial below,
+   readout after each answer. The dial is the identity of the page. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #14213d; --muted: #5b6478;
+  --line: #d9dee8; --accent: #e4572e; --accent-soft: #fbe3db;
+  --good: #1f8a70; --good-soft: #dcf1ea; --bad: #b3261e; --bad-soft: #f8dedc;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e131d; --surface: #161d2b; --ink: #e8edf6; --muted: #9aa5ba;
+  --line: #2a3448; --accent: #ff7a50; --accent-soft: #3a2018;
+  --good: #4cc9a4; --good-soft: #12302a; --bad: #ff8a80; --bad-soft: #3a1a18; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e131d; --surface: #161d2b; --ink: #e8edf6; --muted: #9aa5ba;
+  --line: #2a3448; --accent: #ff7a50; --accent-soft: #3a2018;
+  --good: #4cc9a4; --good-soft: #12302a; --bad: #ff8a80; --bad-soft: #3a1a18; color-scheme: dark }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 17px/1.5 var(--body); padding-inline: 16px; padding-block: 20px 48px; }
+.wrap { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.marca { font: 700 1.6rem/1 var(--display); letter-spacing: -.02em; }
+.marca span { color: var(--accent); }
+.sub { color: var(--muted); font-size: .95rem; }
+.eyebrow { font: 500 .75rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: 1.45rem; line-height: 1.25; }
+h2 { font-size: 1.15rem; }
+p { margin: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.modulos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.modulo { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.modulo:hover, .modulo:focus-visible { border-color: var(--accent); }
+.modulo strong { font-family: var(--display); }
+.reglas { display: grid; gap: 10px; color: var(--muted); font-size: .95rem; }
+.reglas b { color: var(--ink); }
+.progreso { display: flex; gap: 4px; }
+.progreso i { flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.progreso i.ok { background: var(--good); } .progreso i.mal { background: var(--bad); } .progreso i.ahora { background: var(--accent); }
+.opciones { display: grid; gap: 8px; }
+.opcion { text-align: left; background: transparent; border: 1.5px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; gap: 12px; align-items: flex-start; }
+.opcion .letra { font: 500 .85rem var(--mono); color: var(--muted); padding-top: 2px; }
+.opcion[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+.opcion.correcta { border-color: var(--good); background: var(--good-soft); }
+.opcion.incorrecta { border-color: var(--bad); background: var(--bad-soft); }
+.opcion:disabled { cursor: default; }
+.dial { display: grid; gap: 8px; }
+.dial-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.lectura { font: 700 2.4rem/1 var(--display); font-variant-numeric: tabular-nums; color: var(--accent); }
+.dial input { width: 100%; accent-color: var(--accent); height: 32px; }
+.escala { display: flex; justify-content: space-between; font: 500 .75rem var(--mono); color: var(--muted); }
+.accion { background: var(--ink); color: var(--bg); border: 0; border-radius: 10px; padding: 14px 18px; font-weight: 700; }
+.accion:disabled { opacity: .35; cursor: not-allowed; }
+.accion.sec { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.fila { display: flex; gap: 10px; flex-wrap: wrap; }
+.fila > * { flex: 1 1 160px; }
+.veredicto { border-radius: 10px; padding: 14px; display: grid; gap: 6px; }
+.veredicto.ok { background: var(--good-soft); } .veredicto.mal { background: var(--bad-soft); }
+.veredicto .pts { font: 700 1.1rem var(--display); font-variant-numeric: tabular-nums; }
+.datos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.dato { border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; gap: 2px; min-width: 0; }
+.dato b { font: 700 1.5rem var(--display); font-variant-numeric: tabular-nums; }
+.dato span { color: var(--muted); font-size: .85rem; }
+.grafico { width: 100%; height: auto; display: block; }
+.nota { color: var(--muted); font-size: .9rem; }
+.codigo { font: 500 .9rem var(--mono); background: var(--bg); border: 1px dashed var(--line); border-radius: 8px; padding: 10px 12px; word-break: break-word; user-select: all; }
+@media (max-width: 460px) { .datos { grid-template-columns: 1fr 1fr; } .lectura { font-size: 2rem; } }
+@media (prefers-reduced-motion: no-preference) { .opcion, .modulo { transition: border-color .15s, background .15s; } }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="wrap" id="app">
+  <header>
+    <div class="marca">Calibra<span>.</span></div>
+    <div class="sub">Responde, y di qué tan seguro estás.</div>
+  </header>
+  <div id="vista"></div>
+</div>
+
+<script>
+const MODULOS = {
+  m1: {
+    titulo: "Módulo 1 · IA generativa y el rol del analista",
+    preguntas: [
+      { q: "¿Qué mide la calibración de un modelo o de una persona?", o: ["Cuántas respuestas correctas da en total", "Qué tan rápido responde a cada pregunta", "Si usa un lenguaje formal y bien escrito", "Si su seguridad coincide con su acierto"], c: 3, e: "Alguien calibrado que dice \"90 %\" acierta cerca de 9 de cada 10 veces. Un modelo puede acertar mucho y estar mal calibrado." },
+      { q: "Un verificador automático aprueba el 100 % de lo que revisa. ¿Qué conviene hacer primero?", o: ["Celebrar y publicar lo que ya aprobó", "Cambiar el modelo que redacta los textos", "Desconfiar y revisar a mano unos casos", "Subirle la temperatura al verificador"], c: 2, e: "Un 100 % de aprobación es una señal de alarma: lo más probable es que el verificador esté sesgado a confirmar." },
+      { q: "¿Por qué no conviene que el mismo modelo que redactó una respuesta sea su único juez?", o: ["Porque tiende a aprobar su propio texto", "Porque así la revisión sale más cara", "Porque no puede leer su propia salida", "No hay problema: es quien mejor conoce ese texto"], c: 0, e: "Un revisor independiente, idealmente uno que no genera texto, no hereda los errores del que redactó." },
+      { q: "¿Qué significa RAG?", o: ["Recuperar documentos y responder con ellos", "Un formato de archivo para guardar prompts", "Volver a entrenar el modelo con datos propios", "Un tipo de gráfico para comparar modelos"], c: 0, e: "Retrieval-Augmented Generation: la respuesta se apoya en fuentes recuperadas, idealmente citándolas." },
+      { q: "¿Qué entidad colombiana dio en 2024 lineamientos sobre el tratamiento de datos personales en sistemas de IA?", o: ["El Departamento Nacional de Planeación", "El Ministerio de las TIC (MinTIC)", "La Superintendencia de Industria y Comercio", "El Banco de la República de Colombia"], c: 2, e: "La SIC, con la Circular Externa 2 de 2024, que dice cómo se aplica la Ley 1581 a la IA." },
+      { q: "¿Cuál es la política nacional de inteligencia artificial de Colombia aprobada en 2025?", o: ["Ley 1581", "CONPES 4144", "Decreto 1377", "CONPES 3920"], c: 1, e: "El CONPES 4144 se aprobó el 14 de febrero de 2025. La Ley 1581 es la de protección de datos personales (2012)." },
+      { q: "El marco NIST AI 600-1 llama \"confabulación\" a:", o: ["Un ataque que cambia las instrucciones del modelo", "Un sesgo de género en las respuestas", "Una falla de conexión con el servidor", "Un contenido falso dicho con seguridad"], c: 3, e: "Es lo que coloquialmente se llama alucinación." },
+      { q: "¿Qué tarea conviene que siga en manos del analista?", o: ["Dar formato a una tabla para el informe", "Escribir un primer borrador del código", "Decidir si un resultado tiene sentido", "Resumir un documento largo en una página"], c: 2, e: "La IA acelera lo mecánico. El criterio sobre qué significa un número sigue siendo humano." },
+      { q: "Vas a pegar una base de clientes en un chat de IA externo. ¿Qué haces?", o: ["La pego completa, que así responde mejor", "Le pido al modelo que no la guarde después", "Le quito solo la columna de los correos", "Anonimizo y reviso qué permite la empresa"], c: 3, e: "Pedirle al modelo que no guarde algo no es una garantía. La protección se hace antes de enviar." },
+      { q: "¿Para qué sirve un set de preguntas con respuestas verificadas?", o: ["Para entrenar el modelo con las respuestas buenas", "Para medir el acierto antes y después de cambiar", "Para que el modelo responda más rápido y mejor", "Para reemplazar al analista en la revisión"], c: 1, e: "Sin un set fijo, \"funciona mejor\" es una impresión, no una medición." }
+    ]
+  }
+};
+
+const vista = document.getElementById("vista");
+let estado = { modulo: null, i: 0, eleccion: null, confianza: 60, respuestas: [], revelado: false };
+
+const LLAVE = "calibra-v2";
+function guardar() { try { localStorage.setItem(LLAVE, JSON.stringify(estado)); } catch (e) {} }
+function cargar() { try { const s = JSON.parse(localStorage.getItem(LLAVE)); if (s && MODULOS[s.modulo] !== undefined || (s && s.modulo === null)) return s; } catch (e) {} return null; }
+
+// Puntaje de Brier, convertido a 0–100: 100 = acertaste con 100 % de
+// confianza; 0 = fallaste con 100 %. Es una regla de puntaje "propia":
+// la mejor estrategia es declarar tu confianza real, ni más ni menos.
+function puntos(confianza, acerto) { const p = confianza / 100, y = acerto ? 1 : 0; return Math.round(100 * (1 - (p - y) ** 2)); }
+
+function el(tag, attrs = {}, ...hijos) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const h of hijos.flat()) if (h != null) n.append(h.nodeType ? h : document.createTextNode(h));
+  return n;
+}
+
+function ir(j) {
+  estado.i = j;
+  const r = estado.respuestas[j];
+  estado.eleccion = r ? r.eleccion : null;
+  estado.confianza = r ? r.confianza : 60;
+  render();
+  window.scrollTo({ top: 0 });
+}
+function reiniciar(modulo) { estado = { modulo, i: 0, eleccion: null, confianza: 60, respuestas: [], revelado: false }; render(); }
+
+function render() { vista.replaceChildren(estado.modulo === null ? inicio() : estado.i >= MODULOS[estado.modulo].preguntas.length ? resultado() : pregunta()); guardar(); }
+
+function inicio() {
+  return el("div", { class: "wrap" },
+    el("div", { class: "panel" },
+      el("p", { class: "eyebrow" }, "Cómo se juega"),
+      el("h1", {}, "Acertar no basta: también cuenta saber cuándo no sabes."),
+      el("div", { class: "reglas" },
+        el("p", {}, el("b", {}, "1. "), "Elige una respuesta."),
+        el("p", {}, el("b", {}, "2. "), "Di qué tan seguro estás, de 25 % (adiviné) a 100 % (lo sé)."),
+        el("p", {}, el("b", {}, "3. "), "Si aciertas con mucha seguridad, ganas casi 100 puntos. Si fallas con mucha seguridad, casi 0. Declarar tu duda real siempre conviene."))),
+    el("div", { class: "modulos" },
+      Object.entries(MODULOS).filter(([, m]) => !m.oculto).map(([k, m]) => el("button", { class: "modulo", onclick: () => reiniciar(k) },
+        el("span", { class: "eyebrow" }, `${m.preguntas.length} preguntas`), el("strong", {}, m.titulo)))));
+}
+
+function barra() {
+  const m = MODULOS[estado.modulo];
+  return el("div", { class: "progreso", "aria-hidden": "true" }, m.preguntas.map((_, j) => {
+    const r = estado.respuestas[j];
+    return el("i", { class: r ? (r.acerto ? "ok" : "mal") : j === estado.i ? "ahora" : "" });
+  }));
+}
+
+function pregunta() {
+  const m = MODULOS[estado.modulo], p = m.preguntas[estado.i], r = estado.respuestas[estado.i];
+  const letras = "ABCD";
+  const opciones = el("div", { class: "opciones", role: "group", "aria-label": "Opciones" }, p.o.map((txt, j) => {
+    let clase = "opcion";
+    if (r) { if (j === p.c) clase += " correcta"; else if (j === r.eleccion) clase += " incorrecta"; }
+    return el("button", { class: clase, "aria-pressed": String(estado.eleccion === j), disabled: !!r,
+      onclick: () => { estado.eleccion = j; render(); } }, el("span", { class: "letra" }, letras[j]), el("span", {}, txt));
+  }));
+
+  const lectura = el("span", { class: "lectura", id: "lectura" }, `${estado.confianza} %`);
+  const dial = el("div", { class: "dial" },
+    el("div", { class: "dial-top" }, el("label", { for: "confianza", class: "eyebrow" }, "Qué tan seguro estás"), lectura),
+    el("input", { type: "range", id: "confianza", min: 25, max: 100, step: 5, value: estado.confianza, disabled: !!r,
+      oninput: (ev) => { estado.confianza = Number(ev.target.value); lectura.textContent = `${estado.confianza} %`; const b = document.getElementById("responder"); if (b && estado.eleccion !== null) b.textContent = `Responder con ${estado.confianza} % de seguridad`; } }),
+    el("div", { class: "escala" }, el("span", {}, "25 · adiviné"), el("span", {}, "50"), el("span", {}, "75"), el("span", {}, "100 · lo sé")));
+
+  const panel = el("div", { class: "panel" },
+    el("div", { class: "eyebrow" }, `${m.titulo} · ${estado.i + 1} de ${m.preguntas.length}`),
+    barra(), el("h1", {}, p.q), opciones, dial);
+
+  if (!r) {
+    panel.append(el("button", { class: "accion", id: "responder", disabled: estado.eleccion === null, onclick: () => {
+      const acerto = estado.eleccion === p.c;
+      estado.respuestas[estado.i] = { eleccion: estado.eleccion, confianza: estado.confianza, acerto, pts: puntos(estado.confianza, acerto) };
+      render();
+    } }, estado.eleccion === null ? "Elige una respuesta" : `Responder con ${estado.confianza} % de seguridad`));
+  } else {
+    panel.append(el("div", { class: `veredicto ${r.acerto ? "ok" : "mal"}` },
+      el("span", { class: "pts" }, `${r.acerto ? "Correcto" : "Incorrecto"} · ${r.pts} puntos`),
+      el("p", {}, p.e)));
+    panel.append(el("p", { class: "nota" }, `Tu respuesta: ${letras[r.eleccion]}, con ${r.confianza} % de seguridad. Ya no se puede cambiar: si se pudiera, el puntaje dejaría de medir lo que sabías al responder.`));
+    const siguiente = estado.i + 1;
+    panel.append(el("button", { class: "accion", onclick: () => { ir(siguiente); } },
+      siguiente < m.preguntas.length ? (estado.respuestas[siguiente] ? "Siguiente" : "Siguiente pregunta") : "Ver mi calibración"));
+  }
+  const pie = el("div", { class: "fila" });
+  if (estado.i > 0) pie.append(el("button", { class: "accion sec", onclick: () => ir(estado.i - 1) }, "Ver la anterior"));
+  pie.append(el("button", { class: "accion sec", onclick: () => reiniciar(estado.modulo) }, "Empezar el módulo de nuevo"));
+  panel.append(pie);
+  return panel;
+}
+
+function grafico(rs) {
+  // Confianza declarada (x) contra acierto real (y), agrupado por tramos.
+  const tramos = [[25, 49], [50, 69], [70, 89], [90, 100]].map(([a, b]) => {
+    const g = rs.filter(r => r.confianza >= a && r.confianza <= b);
+    return { a, b, n: g.length, conf: g.length ? g.reduce((s, r) => s + r.confianza, 0) / g.length : null, acierto: g.length ? 100 * g.filter(r => r.acerto).length / g.length : null };
+  });
+  const W = 320, H = 220, L = 40, B = 34, T = 12, R = 12;
+  const x = v => L + (v - 20) / 80 * (W - L - R), y = v => H - B - v / 100 * (H - B - T);
+  const ns = "http://www.w3.org/2000/svg";
+  const s = (tag, a, txt) => { const n = document.createElementNS(ns, tag); for (const k in a) n.setAttribute(k, a[k]); if (txt != null) n.textContent = txt; return n; };
+  const svg = s("svg", { viewBox: `0 0 ${W} ${H}`, class: "grafico", role: "img", "aria-label": "Confianza declarada contra acierto real" });
+  for (const v of [0, 25, 50, 75, 100]) {
+    svg.append(s("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: "var(--line)", "stroke-width": 1 }));
+    svg.append(s("text", { x: L - 6, y: y(v) + 4, "text-anchor": "end", "font-size": 10, fill: "var(--muted)", "font-family": "var(--mono)" }, `${v}`));
+  }
+  for (const v of [25, 50, 75, 100]) svg.append(s("text", { x: x(v), y: H - B + 16, "text-anchor": "middle", "font-size": 10, fill: "var(--muted)", "font-family": "var(--mono)" }, `${v}`));
+  svg.append(s("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle", "font-size": 10, fill: "var(--muted)" }, "Lo seguro que dijiste estar (%)"));
+  svg.append(s("line", { x1: x(25), y1: y(25), x2: x(100), y2: y(100), stroke: "var(--muted)", "stroke-dasharray": "4 4", "stroke-width": 1.5 }));
+  svg.append(s("text", { x: x(96), y: y(100) + 14, "text-anchor": "end", "font-size": 10, fill: "var(--muted)" }, "calibración perfecta"));
+  for (const t of tramos) if (t.n) {
+    svg.append(s("circle", { cx: x(t.conf), cy: y(t.acierto), r: 5 + t.n * 1.5, fill: "var(--accent)", "fill-opacity": .85, stroke: "var(--surface)", "stroke-width": 2 }));
+    svg.append(s("text", { x: x(t.conf), y: y(t.acierto) - (9 + t.n * 1.5), "text-anchor": "middle", "font-size": 10, fill: "var(--ink)", "font-family": "var(--mono)" }, `${t.n}`));
+  }
+  return svg;
+}
+
+function resultado() {
+  const m = MODULOS[estado.modulo], rs = estado.respuestas;
+  const total = rs.reduce((s, r) => s + r.pts, 0);
+  const aciertos = rs.filter(r => r.acerto).length;
+  const confMedia = rs.reduce((s, r) => s + r.confianza, 0) / rs.length;
+  const pctAcierto = 100 * aciertos / rs.length;
+  const exceso = Math.round(confMedia - pctAcierto);
+  const lectura = Math.abs(exceso) <= 5 ? "Bien calibrado: tu seguridad coincidió con tu acierto."
+    : exceso > 0 ? `Sobreconfianza: dijiste estar ${Math.round(confMedia)} % seguro en promedio y acertaste ${Math.round(pctAcierto)} %.`
+    : `Subconfianza: sabías más de lo que creías (dijiste ${Math.round(confMedia)} %, acertaste ${Math.round(pctAcierto)} %).`;
+  const codigo = `Calibra · ${estado.modulo.toUpperCase()} · ${aciertos}/${rs.length} · ${total} pts · desajuste ${exceso > 0 ? "+" : ""}${exceso}`;
+  const copiar = el("button", { class: "accion sec", onclick: async (ev) => {
+    try { await navigator.clipboard.writeText(codigo); ev.target.textContent = "Copiado"; }
+    catch (e) { const sel = getSelection(); const r = document.createRange(); r.selectNodeContents(document.getElementById("codigo")); sel.removeAllRanges(); sel.addRange(r); ev.target.textContent = "Selecciónalo y cópialo"; }
+  } }, "Copiar mi código");
+  return el("div", { class: "panel" },
+    el("div", { class: "eyebrow" }, m.titulo), barra(),
+    el("h1", {}, lectura),
+    el("div", { class: "datos" },
+      el("div", { class: "dato" }, el("b", {}, `${total}`), el("span", {}, `puntos de ${rs.length * 100}`)),
+      el("div", { class: "dato" }, el("b", {}, `${aciertos}/${rs.length}`), el("span", {}, "respuestas correctas")),
+      el("div", { class: "dato" }, el("b", {}, `${exceso > 0 ? "+" : ""}${exceso}`), el("span", {}, "desajuste de confianza"))),
+    el("h2", {}, "¿Cuando dijiste 90 %, acertaste 90 %?"),
+    grafico(rs),
+    el("p", { class: "nota" }, "Cada punto agrupa tus respuestas por tramo de confianza; el número es cuántas hay. Sobre la línea punteada, sabías más de lo que dijiste. Debajo, dijiste saber más de lo que sabías. Con 10 preguntas es una foto, no un diagnóstico."),
+    el("p", { class: "nota" }, "Esto es lo mismo que se le exige a un revisor automático de IA: que su probabilidad signifique algo."),
+    el("div", { class: "codigo", id: "codigo" }, codigo),
+    el("div", { class: "fila" }, copiar,
+      el("button", { class: "accion sec", onclick: () => ir(0) }, "Revisar mis respuestas"),
+      el("button", { class: "accion sec", onclick: () => reiniciar(estado.modulo) }, "Repetir este módulo"),
+      el("button", { class: "accion", onclick: () => reiniciar(null) }, "Elegir otro módulo")));
+}
+
+const previo = cargar(); if (previo) estado = previo;
+render();
+</script>
+
+</body>
+</html>

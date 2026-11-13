@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Módulo 1 · clase 1</title>
+<style>
+:root { --fondo: #0f1514; --texto: #e8f1ef; --suave: #9fb3af; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--fondo); color: var(--texto); font-family: Arial, Helvetica, sans-serif; }
+header { max-width: 1280px; margin: 0 auto; padding: 24px 16px 8px; display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; }
+header h1 { font-size: 22px; margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--suave); font-size: 15px; }
+header a { color: var(--texto); }
+main { max-width: 1280px; margin: 0 auto; padding: 8px 16px 48px; display: flex; flex-direction: column; gap: 20px; }
+.marco { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 8px; background: #fff; }
+.marco > section { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; box-sizing: border-box; }
+.marco > section * { margin: 0; }
+.marco > section ul, .marco > section ol { padding-left: 1.1em; display: flex; flex-direction: column; gap: .35em; }
+</style>
+</head>
+<body>
+<header><h1>Módulo 1 · clase 1</h1><p>26 diapositivas · <a href="../../">Todo el material de la clase</a></p></header>
+<main>
+<div class="marco">
+<section id="portada" style="background:#0C5E59;color:#F4FAF9;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#CFE7E4;letter-spacing:1px">Módulo 1 · clase en vivo</p>
+<h1 style="font-size:96px;font-weight:700;line-height:1.1;color:#F4FAF9">IA generativa y el nuevo rol del analista de datos</h1>
+<div style="display:flex;flex-direction:column;gap:20px;padding:24px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#F4FAF9">90 minutos para practicar, no para repetir el material.</p>
+<p style="font-size:44px;line-height:1.3;color:#F4FAF9">Verificar antes de confiar: hoy mides por primera vez.</p>
+<p style="font-size:32px;line-height:1.35;color:#CFE7E4">Fechas por confirmar con UdeCataluña.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#CFE7E4">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#CFE7E4;text-align:right">1 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="agenda" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">90 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Así va la clase</h2>
+<div style="display:flex;flex-direction:column;gap:0px;padding:16px 0 0 0">
+<div style="display:flex;gap:48px;align-items:baseline;padding:24px 0;border-top:2px solid #C9DCDA">
+<p style="font-size:44px;font-weight:700;color:#0C5E59;width:200px;font-variant-numeric:tabular-nums">0–15</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E;flex:1">Llegada, y una demo con datos del día.</p>
+</div>
+<div style="display:flex;gap:48px;align-items:baseline;padding:24px 0;border-top:2px solid #C9DCDA">
+<p style="font-size:44px;font-weight:700;color:#0C5E59;width:200px;font-variant-numeric:tabular-nums">15–40</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E;flex:1">El modelo, y tu taller gratis: el stack.</p>
+</div>
+<div style="display:flex;gap:48px;align-items:baseline;padding:24px 0;border-top:2px solid #C9DCDA">
+<p style="font-size:44px;font-weight:700;color:#0C5E59;width:200px;font-variant-numeric:tabular-nums">40–73</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E;flex:1">Calibra, la sobreconfianza y el revisor.</p>
+</div>
+<div style="display:flex;gap:48px;align-items:baseline;padding:24px 0;border-top:2px solid #C9DCDA;border-bottom:2px solid #C9DCDA">
+<p style="font-size:44px;font-weight:700;color:#0C5E59;width:200px;font-variant-numeric:tabular-nums">73–90</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E;flex:1">Qué te obliga, y el entregable.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">2 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="llegada" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">0–5 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Abre Calibra en el teléfono</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Margen para conectarse. Todavía no empieces el juego.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Ábrelo ahora. Lo usamos desde el minuto 40.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Si no quieres dar tu nombre, elige un alias para el módulo 8.</p>
+</div>
+<div style="display:flex;padding:8px 0 0 0">
+<p style="font-size:44px;font-weight:700;color:#0C5E59;background:#E6F2F1;padding:20px 36px;border-radius:12px">calibra-v2.vercel.app</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">3 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="demo" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">5–15 min · demo</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Un chat con datos del día</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿Cuál es la TRM vigente hoy, 10 de noviembre de 2026?</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿Cuál fue la TRM promedio de octubre de 2026?</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Se lo preguntamos a un chat gratis y lo comparamos con la TRM oficial de datos.gov.co.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">¿Cómo sabemos si lo que dijo es cierto?</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">4 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="modelo" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">15–27 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Predice la siguiente palabra</h2>
+<div style="display:flex;gap:24px;align-items:center;padding:24px 0 0 0">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E6F2F1;padding:40px;border-radius:16px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59">1</p>
+<p style="font-size:44px;font-weight:700;color:#1A1F1E">El texto</p>
+</div>
+<p style="font-size:64px;font-weight:700;color:#0C5E59">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E6F2F1;padding:40px;border-radius:16px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59">2</p>
+<p style="font-size:44px;font-weight:700;color:#1A1F1E">Predice</p>
+</div>
+<p style="font-size:64px;font-weight:700;color:#0C5E59">→</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#E6F2F1;padding:40px;border-radius:16px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59">3</p>
+<p style="font-size:44px;font-weight:700;color:#1A1F1E">La siguiente</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px;padding:24px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Por eso es fluido.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Por eso puede inventar con seguridad.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">5 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="cifra" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">15–27 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Si una IA te entrega una cifra</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Para un informe a tu jefe, ¿qué harías antes de usarla?</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Es la tercera pregunta del foro de presentación.</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">No hay respuesta correcta.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">6 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="soberano" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · tu taller</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Tu taller, sin pagar una cuenta</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Tus datos, en archivos que te puedes llevar.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Tu método, que otra persona puede repetir.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Herramientas gratis, que puedes cambiar.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Si un proveedor cierra, te cambias de proveedor.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">7 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="stack" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · tu taller</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">El stack, con planes gratis</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:28px;padding:8px 0 0 0">
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">GitHub</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Tu código y tus datos, con historial.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">Supabase</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Tu base de datos.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">Vercel</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Publicas tu trabajo en la web.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">IA por API</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">OpenRouter o Hugging Face, con modelos de uso gratis.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">OpenCode</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Un agente de código abierto que programa contigo.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">MCP</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Conecta la IA a tus datos, con permisos mínimos.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#E6F2F1;padding:32px;border-radius:16px">
+<h3 style="font-size:40px;font-weight:700;line-height:1.2;color:#1A1F1E">Jev</h3>
+<p style="font-size:28px;line-height:1.35;color:#3A4544">Decide y te dice qué tan seguro está.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">8 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="regla-api" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · tu taller</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Antes de usar una IA por API</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Los planes gratis pueden guardar lo que les mandas.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Solo datos públicos o inventados.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">La llave de la API es un secreto: nunca en el código ni en pantalla.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Y la mides antes de confiar: ¿cuántas acertó?</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">9 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="esta-semana" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · tu taller</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Esta semana, si quieres</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Abre tus cuentas gratis: GitHub, Supabase y Vercel.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Instala OpenCode, la app de escritorio: trae modelos gratis, sin cuenta.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Si sacas una llave de API, es un secreto: nunca en el chat.</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Es opcional. El entregable del módulo 1 no cambia.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">10 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="empresa-microsoft" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · en tu empresa</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Si tu empresa usa Microsoft</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>Copilot en Power BI:</b> resume una página o escribe una consulta DAX. Tú la compruebas.</p>
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>ChatGPT o Copilot:</b> escriben DAX y Power Query si les das el esquema, nunca los datos.</p>
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>Agentes:</b> Copilot Studio o un agente de datos de Fabric sobre tu modelo, si tu empresa los habilita.</p>
+<p style="font-size:40px;line-height:1.3;font-weight:700;color:#0C5E59">Pruébalo con 5 preguntas cuyo resultado ya conoces.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+</section>
+</div>
+<div class="marco">
+<section id="empresa-google" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">27–40 min · en tu empresa</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Si tu empresa usa Google</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>Gemini en Hojas de cálculo:</b> fórmulas, tablas y gráficos a partir de una pregunta.</p>
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>Gemini en Colab:</b> arma y corre el análisis en un cuaderno. Tú lo revisas.</p>
+<p style="font-size:40px;line-height:1.3;color:#1A1F1E"><b>Gemini en BigQuery o Looker:</b> preguntas en español sobre tus datos, si tu empresa los tiene.</p>
+<p style="font-size:40px;line-height:1.3;font-weight:700;color:#0C5E59">El mismo método: 5 preguntas verificadas antes de confiar.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+</section>
+</div>
+<div class="marco">
+<section id="calibra-jugar" style="background:#E6F2F1;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">40–58 min · Calibra</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Juega el set del módulo 1</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Respondes y declaras qué tan seguro estás.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Puede traer preguntas fuera del temario: ahí se dice «no sé».</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Al final: ¿cuando dijiste 90 %, acertaste 90 %?</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">No toques otro botón hasta copiar tu código.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">11 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="calibra-codigo" style="background:#E6F2F1;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">40–58 min · Calibra</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Copia tu código antes de seguir</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Pégalo en el formulario del chat, con un alias si prefieres.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">«<b>Elegir otro módulo</b>» lo borra en el acto.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">«<b>Repetir este módulo</b>» también.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">«<b>Empezar el módulo de nuevo</b>» también. El código queda para el módulo 8.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">12 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="calibra-90" style="background:#E6F2F1;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">40–58 min · Calibra</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">¿Cuando dijiste 90 %, acertaste 90 %?</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Compara lo que declaraste con lo que acertaste.</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">No hace falta decir el número en voz alta.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">13 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="sobreconfianza" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">58–73 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Sobreconfianza</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Es lo que Calibra acaba de medir.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Su pariente es el sesgo de automatización.</p>
+<p style="font-size:44px;line-height:1.3;color:#3A4544">Preferir lo que dice la máquina aunque, medida, se equivoque más.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">14 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="juez" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">58–73 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">El que redacta no es su juez</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Zheng et al. midieron posición y verbosidad (2023).</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Autopreferencia: la vieron; no la confirmaron.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Hacen falta revisores y un set verificado.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Si un revisor aprueba el 100 %, es señal de alarma.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">15 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="quien-no-esta" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">58–73 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">¿Quién no está en tus datos?</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Hunty usa IA en la selección de candidatos.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">¿Cómo sabrías si discrimina?</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Pregunta al aire, sin debate.</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Vuelve en la gobernanza del módulo 8.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">16 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="norma" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">73–85 min · 3 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Lo que te obliga hoy</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">La Ley 1581 de 2012 obliga: protege los datos personales.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Circular Externa 2 de 2024, SIC: cómo se aplica la ley a la IA.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">CONPES 4144 (feb-2025): política pública, no una ley.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">No hay ley integral. El proyecto del Gobierno se archivó.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">17 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="subir-datos" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">73–85 min · 7 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Antes de subir datos a una IA</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿Hay datos de personas?</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿Hay datos sensibles o de menores?</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿La finalidad con que se recogieron cubre este uso?</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">18 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="terminos" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">73–85 min · 7 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Términos, y anonimizar antes</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿El proveedor está fuera de Colombia, y con qué términos?</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">¿Puedo anonimizar o agregar antes?</p>
+<p style="font-size:32px;line-height:1.35;color:#3A4544">Las aplicamos a una base de ejemplo, con datos inventados.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">19 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="chats-entrenan" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">73–85 min · 2 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">¿Tus chats entrenan al modelo?</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">¿Cuántos lo tenían activo? Manos, no nombres.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Claude: hasta 5 años si lo permites; si no, 30 días, como antes.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Un chat que borras sale de sus servidores en 30 días.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">ChatGPT: «Mejorar el modelo». Gemini: «Conservar la actividad».</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">20 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="entregable" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">85–90 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Cinco preguntas verificadas</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Datos tuyos, sin datos personales, o uno de datos.gov.co.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Calcula la respuesta a mano. Luego pregúntale a un chat.</p>
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Anota cuántas acertó y qué modelo respondió.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Ruta A: Excel o Sheets y un chat. Ruta B: Colab con pandas.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">21 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="que-traer" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">85–90 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Qué tiene que traer</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Un método que otra persona pueda repetir.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Cuántas acertó y qué modelo: es tu primera medición.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Una reflexión de 5 líneas. Si acertó las 5, cuéntalo.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Una tabla: qué delegas, qué verificas y qué decides tú.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">22 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="antes-de-subir" style="background:#FAFBFA;color:#1A1F1E;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#0C5E59;letter-spacing:1px">85–90 min</p>
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;color:#1A1F1E">Antes de subir nada</h2>
+<div style="display:flex;flex-direction:column;gap:28px;padding:16px 0 0 0">
+<p style="font-size:44px;line-height:1.3;font-weight:700;color:#0C5E59">Público no significa libre de datos personales.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">No sirve una fila por persona, ni nombre, documento o correo.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">Tampoco dirección, teléfono, ni el texto libre.</p>
+<p style="font-size:44px;line-height:1.3;color:#1A1F1E">De tu empresa, nada confidencial a un chat gratuito.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#3A4544">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#3A4544;text-align:right">23 / 24</p>
+
+</section>
+</div>
+<div class="marco">
+<section id="cierre" style="background:#0C5E59;color:#F4FAF9;font-family:Arial, Helvetica, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:32px;font-weight:700;color:#CFE7E4;letter-spacing:1px">Cierre</p>
+<h1 style="font-size:96px;font-weight:700;line-height:1.1;color:#F4FAF9">Verificar antes de confiar</h1>
+<div style="display:flex;flex-direction:column;gap:20px;padding:24px 0 0 0">
+<p style="font-size:44px;line-height:1.3;color:#F4FAF9">Este set vuelve en el módulo 2.</p>
+<p style="font-size:44px;line-height:1.3;color:#F4FAF9">En el 7 y el 8, también, si usas los mismos datos.</p>
+<p style="font-size:44px;line-height:1.3;color:#F4FAF9">La tabla vuelve en el plan por etapas del módulo 8.</p>
+<p style="font-size:32px;line-height:1.35;color:#CFE7E4">El quiz del campus no es Calibra. Pregunta solo lo enseñado.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:900px;font-size:24px;color:#CFE7E4">Módulo 1 · UdeCataluña</p>
+<p style="position:absolute;right:128px;bottom:64px;width:300px;font-size:24px;color:#CFE7E4;text-align:right">24 / 24</p>
+
+</section>
+</div>
+</main>
+<script>
+function escalar() {
+  document.querySelectorAll('.marco').forEach(function (m) {
+    m.firstElementChild.style.transform = 'scale(' + (m.clientWidth / 1920) + ')';
+  });
+}
+window.addEventListener('resize', escalar);
+escalar();
+</script>
+</body>
+</html>

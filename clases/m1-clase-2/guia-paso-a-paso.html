@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><title>Guía paso a paso: tus 5 preguntas verificadas</title></head>
+<body style="font-family:Arial, sans-serif">
+<h1>Guía paso a paso: tus 5 preguntas verificadas</h1>
+<p><b>Módulo 1 · CDIA01 · UdeCataluña.</b> Esta guía es para hacer el entregable del módulo 1 sin experiencia previa. No hay que instalar nada.</p>
+<p><b>Enlace de la planilla del taller:</b> <a href="https://docs.google.com/spreadsheets/d/1QP9gI3h2bXeKGmECjanSkVcAWiHvuM2spO8J4c_YeVc/copy">https://docs.google.com/spreadsheets/d/1QP9gI3h2bXeKGmECjanSkVcAWiHvuM2spO8J4c_YeVc/copy</a></p>
+<p>En esta guía, «chat de Meet» es el chat de la reunión y «chat de IA» es la herramienta a la que le haces las preguntas.</p>
+
+<h2>Qué entregas</h2>
+<ol>
+<li>Cinco preguntas de negocio, claras, sobre un conjunto de datos.</li>
+<li>La respuesta correcta de cada una, calculada por ti, con un método que otra persona pueda repetir.</li>
+<li>Qué respondió un chat de IA, con qué modelo, y en cuántas de las 5 acertó.</li>
+<li>Una reflexión de 5 líneas: en qué falló la IA, en qué acertó y qué harías distinto. Si acertó las 5, también se cuenta.</li>
+<li>Una tabla sobre tu tarea semanal: para cada paso, qué le delegas a la IA, qué verificas y qué decides tú.</li>
+</ol>
+
+<h2>Lo que necesitas</h2>
+<ul>
+<li>Una cuenta de Google (Gmail), para usar Hojas de cálculo. Si no tienes o prefieres Excel, el paso 1 explica cómo descargar la planilla.</li>
+<li>Un chat de IA gratis: ChatGPT (chatgpt.com), Gemini (gemini.google.com), Claude (claude.ai) o Copilot (copilot.com). Cualquiera sirve. Gemini entra con tu misma cuenta de Google; Claude pide crear una cuenta.</li>
+</ul>
+
+<h2>Paso a paso con la planilla del taller</h2>
+<ol>
+<li><b>Haz tu copia.</b> Abre el enlace de la planilla (está arriba, al inicio de esta guía) y elige «Crear una copia» (en algunos equipos dice «Hacer una copia»). La copia queda en tu Drive y solo tú la ves. Si ya hiciste tu copia en la clase, sigue en esa: no hagas otra. Las celdas amarillas son las que llenas tú.<br>
+Si usas Excel o no tienes cuenta de Google: borra «/copy» al final del enlace, ábrelo y elige Archivo › Descargar › Microsoft Excel (.xlsx). Trabaja en ese archivo y guárdalo seguido (Ctrl + S; en Mac, Cmd + S).</li>
+<li><b>Mira los datos.</b> Las pestañas de la planilla están abajo, a la izquierda (no son las del navegador). Haz clic en «TRM 2026». Hay una fila por día, del 1 de enero al 10 de noviembre de 2026. La columna «trm» es el valor oficial del dólar en pesos colombianos, vigente ese día. Los fines de semana y festivos repiten la TRM vigente: por eso hay valores repetidos. En datos.gov.co esos días comparten una sola fila; aquí cada día tiene la suya.<br>
+No cambies las columnas A y B: tus cálculos van en la columna D, que está vacía.</li>
+<li><b>Pregunta 1: un dato puntual.</b> «¿Cuál era la TRM vigente el 10 de noviembre de 2026?». En «TRM 2026», haz clic en cualquier fecha de la columna A y presiona Ctrl + flecha abajo (en Mac, Cmd + flecha abajo): llegas a la última fila, la 315, del 2026-11-10. Si el atajo no te funciona, baja hasta esa fila con la barra de desplazamiento.<br>
+Ve a la pestaña «Mis 5 preguntas». En la fila de la pregunta 1 (la fila 2 de la hoja), anota el valor en «Respuesta que calculé yo» y escribe en «Cómo la calculé»: «fila del 2026-11-10 en la pestaña TRM 2026».</li>
+<li><b>Pregunta 2: un promedio.</b> «¿Cuál fue la TRM promedio de octubre de 2026, contando los 31 días?». En «TRM 2026», baja hasta la fila 275 (fecha 2026-10-01) y haz clic en la celda B275 (columna B, fila 275). Baja hasta la fila 305 (2026-10-31) y haz Mayús + clic (Shift + clic) en B305: quedan marcados los 31 días de octubre. Abajo a la derecha aparece «Suma»: haz clic ahí y elige «Promedio» (si tu Google está en español de España, dice «Media»). En Excel, el promedio ya aparece en la barra de abajo.<br>
+También puedes hacer clic en la celda D2 de «TRM 2026» y escribir <code>=PROMEDIO(B275:B305)</code>. Si sale error, prueba <code>=AVERAGE(B275:B305)</code>. No la escribas en «Mis 5 preguntas»: ahí la columna B no tiene los datos y sale error.<br>
+Anota el resultado en «Respuesta que calculé yo» de la pregunta 2 y escribe en «Cómo la calculé»: «promedio de B275:B305 (1 al 31 de octubre) en la pestaña TRM 2026».</li>
+<li><b>Pregúntale al chat de IA.</b> Abre tu chat de IA en otra pestaña del navegador y hazle las mismas dos preguntas, tal cual, una por una. De cada respuesta, copia la parte que trae el número, o la frase en que dice que no lo tiene.<br>
+Para pegarla en «Lo que respondió el chat» sin que se reparta en varias filas, haz doble clic en la celda y pega con Ctrl + V (en Mac, Cmd + V). Si algo se desordena, deshaz con Ctrl + Z (en Mac, Cmd + Z).<br>
+En «Chat y modelo, con la fecha» anota el nombre del chat, el modelo (la versión que respondió; suele aparecer arriba, en un menú o junto al cuadro donde escribes) y la fecha de hoy. Si no aparece, escribe el nombre del chat y «modelo no visible».</li>
+<li><b>Compara.</b> En «¿Acertó?» elige <b>Sí</b> si dio el mismo número que calculaste; <b>En parte</b> si dio un número cercano pero distinto, o si acertó solo una parte (por ejemplo, el valor y no la fecha); <b>No</b> si dio otro número o dijo que no tiene el dato.<br>
+Si no coincide, revisa primero tu cálculo: a veces el error es nuestro. Si dice que no tiene el dato, anótalo igual en «Lo que respondió el chat»: también es una respuesta.</li>
+<li><b>Pregunta 3, por tu cuenta.</b> «¿Qué día, entre el 1 de enero y el 10 de noviembre de 2026, tuvo la TRM vigente más alta, y cuánto fue, en pesos?».<br>
+Pista: en la pestaña «TRM 2026», haz clic en la celda D3 (está vacía) y escribe <code>=MAX(B2:B315)</code>: es la TRM más alta. Para ver la fecha, presiona Ctrl + F (en Mac, Cmd + F) y escribe solo el final del número, con sus decimales, tal como lo ves en la celda: si te dio 3.456,78, busca 456,78. Si la búsqueda marca tu propia fórmula, presiona Enter para ir al siguiente resultado. La fecha está en la columna A de esa fila.<br>
+Después, en «Mis 5 preguntas», haz clic en «Tu pregunta 3», escribe encima la pregunta, anota tu respuesta y en «Cómo la calculé» escribe: «fórmula MAX(B2:B315) en la pestaña TRM 2026 y búsqueda con Ctrl + F para la fecha». No empieces ese texto con =: la hoja lo tomaría como fórmula. Hazle la pregunta al chat de IA y repite los pasos 5 y 6.</li>
+<li><b>Preguntas 4 y 5, tuyas.</b> Escríbelas en «Tu pregunta 4» y «Tu pregunta 5» de «Mis 5 preguntas», según «Cómo escribir una buena pregunta» (más abajo). Para cada una: calcula tu respuesta, escribe cómo la calculaste y repite los pasos 5 y 6 con el chat de IA. Si no alcanzas en la clase, termínalas antes de la fecha de entrega.</li>
+<li><b>Cuenta los aciertos.</b> Al final, en «Mis 5 preguntas», haz doble clic en «Acertó en ____ de 5 preguntas.» (abajo de la tabla) y cambia las rayas por el número.</li>
+</ol>
+
+<h2>Cómo escribir una buena pregunta</h2>
+<ul>
+<li>Dice qué se mide, de qué período y en qué unidad.</li>
+<li>Dice cómo se calcula cuando hay más de una forma: el promedio de los 31 días no es lo mismo que el de los días hábiles, que son los días en que se publica la TRM.</li>
+<li>Tiene una sola respuesta, y se puede comprobar.</li>
+</ul>
+<p>«¿Cómo estuvo el dólar?» no sirve. «¿Cuánto subió o bajó la TRM entre el 1 de enero y el 1 de noviembre de 2026, en pesos?» sí sirve.</p>
+
+<h2>Tus propios datos</h2>
+<p>Si es tu primera vez con hojas de cálculo, quédate con la TRM: ya está en tu planilla.</p>
+<p>También puedes usar las <a href="https://www.datos.gov.co/Educaci-n/MEN_ESTADISTICAS_EN_EDUCACION_EN_PREESCOLAR-B-SICA/nudc-7mev">estadísticas de educación por municipio</a> del Ministerio de Educación (indicadores por municipio y año; antes de calcular, revisa las filas que no son municipios y el formato de cada columna), o datos tuyos, si cumplen tres cosas:</p>
+<ul>
+<li>no tienen nombres, documentos, teléfonos, correos ni direcciones;</li>
+<li>no tienen una fila por persona;</li>
+<li>no son confidenciales de tu empresa, porque van a un chat gratis.</li>
+</ul>
+<p>Que un conjunto sea público no lo deja libre de datos personales. Revisa también las columnas de texto libre, como comentarios u observaciones.</p>
+
+<h2>La tabla y la reflexión</h2>
+<p>En la pestaña «Qué delegas» hay una fila de ejemplo:</p>
+<table border="1" cellpadding="6" style="border-collapse:collapse">
+<tr><th>Paso de mi tarea semanal</th><th>Qué le delego a la IA</th><th>Qué verifico yo</th><th>Qué decido yo</th></tr>
+<tr><td>Informe semanal de ventas</td><td>El borrador del resumen y el formato de la tabla</td><td>Las cifras, contra el sistema de ventas</td><td>Qué digo en la reunión y qué se hace</td></tr>
+</table>
+<p>Debajo del ejemplo, en las filas amarillas, escribe tu tabla: una fila por paso de una tarea que haces cada semana en tu trabajo, no sobre la TRM.</p>
+<p>En la pestaña «Reflexión» escribe 5 líneas: en qué falló la IA, en qué acertó y qué harías distinto la próxima vez. Si acertó las 5, cuéntalo: también es un resultado.</p>
+
+<h2>Si programas (opcional)</h2>
+<p>El mismo ejemplo con Python está en este cuaderno de Colab: <a href="https://colab.research.google.com/drive/1brVKcX9A55tfjJ_b-Ub4dM414PJc3VqX">M1 · TRM 2026 · 5 preguntas verificadas</a>. Ábrelo, elige Archivo › Guardar una copia en Drive y, en tu copia, Entorno de ejecución › Ejecutar todo (o Ctrl + F9). Es la ruta B y se evalúa igual que la ruta A.</p>
+
+<h2>Antes de entregar</h2>
+<ul>
+<li>☐ Las 5 preguntas son claras y tienen una respuesta calculada por ti.</li>
+<li>☐ Cada respuesta dice cómo la calculaste.</li>
+<li>☐ Anotaste qué respondió el chat de IA, con qué modelo y si acertó.</li>
+<li>☐ Anotaste en cuántas de las 5 acertó el chat.</li>
+<li>☐ Escribiste la reflexión de 5 líneas.</li>
+<li>☐ Llenaste la tabla de qué delegas, qué verificas y qué decides.</li>
+<li>☐ Revisaste que tus datos no tengan datos personales.</li>
+</ul>
+<p><b>Para entregar:</b> en tu copia, elige Archivo › Descargar › Microsoft Excel (.xlsx) y sube ese archivo en el campus, en la actividad del entregable del módulo 1. Si trabajaste en Excel, sube tu archivo. La fecha la indica el campus. Si tienes dudas, escribe en el foro del módulo.</p>
+</body></html>
