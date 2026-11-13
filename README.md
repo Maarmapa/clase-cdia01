@@ -2,6 +2,8 @@
 
 Repo de la clase del módulo 1. Aquí están los datos y las instrucciones para tu IA.
 
+La portada, con las diapositivas, la guía y los datos, está en [`index.html`](index.html). En GitHub Pages queda en https://maarmapa.github.io/clase-cdia01/. El material de cada clase está en [`clases/`](clases/).
+
 ## La idea
 
 No revises archivos a mano: dale los datos a tu IA y verifica lo que te responde.
